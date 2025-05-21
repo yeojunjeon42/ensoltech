@@ -13,8 +13,17 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a5f7a',
-                        secondary: '#4CAF50',
+                        primary: '#224881',
+                        bayofmany: '#224881',
+                        curiousblue: '#24a8de',
+                        luckyPoint: '#181f64',
+                        easternBlue: '#2389bd',
+                        matisse: '#2378af',
+                        jellyBean: '#266ea1',
+                        waikawaGray: '#5f76a2',
+                        eastBay: '#414f86',
+                        biscay: '#1b2c64',
+                        secondary: '#1c98d0',
                     }
                 }
             }
@@ -31,6 +40,26 @@
         .group svg {
             transition: transform 0.2s;
         }
+        .text-primary, .text-primary:hover {
+            color: #224881 !important;
+        }
+        .bg-primary, .bg-primary:hover {
+            background-color: #224881 !important;
+        }
+        .bg-secondary, .bg-secondary:hover {
+            background-color: #1c98d0 !important;
+        }
+        .border-primary {
+            border-color: #224881 !important;
+        }
+        .btn-primary {
+            background-color: #224881 !important;
+            color: #fff !important;
+        }
+        .btn-secondary {
+            background-color: #1c98d0 !important;
+            color: #fff !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -39,7 +68,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-20">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-primary font-semibold text-3xl tracking-wider">ENSOLTECH</a>
+                        <a href="index.html" class="flex items-center">
+                            <img src="icon.png" alt="ENSOLTECH Icon" class="h-10 w-auto mr-3 -ml-3" />
+                            <span class="font-semibold text-3xl tracking-wider" style="color:#224881">ENSOLTECH</span>
+                        </a>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-center space-x-8">
