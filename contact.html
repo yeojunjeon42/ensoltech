@@ -13,8 +13,17 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a5f7a',
-                        secondary: '#4CAF50',
+                        primary: '#224881',
+                        bayofmany: '#224881',
+                        curiousblue: '#24a8de',
+                        luckyPoint: '#181f64',
+                        easternBlue: '#2389bd',
+                        matisse: '#2378af',
+                        jellyBean: '#266ea1',
+                        waikawaGray: '#5f76a2',
+                        eastBay: '#414f86',
+                        biscay: '#1b2c64',
+                        secondary: '#1c98d0',
                     }
                 }
             }
@@ -31,6 +40,26 @@
         .group svg {
             transition: transform 0.2s;
         }
+        .text-primary, .text-primary:hover {
+            color: #224881 !important;
+        }
+        .bg-primary, .bg-primary:hover {
+            background-color: #224881 !important;
+        }
+        .bg-secondary, .bg-secondary:hover {
+            background-color: #1c98d0 !important;
+        }
+        .border-primary {
+            border-color: #224881 !important;
+        }
+        .btn-primary {
+            background-color: #224881 !important;
+            color: #fff !important;
+        }
+        .btn-secondary {
+            background-color: #1c98d0 !important;
+            color: #fff !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -39,7 +68,10 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-20">
                     <div class="flex-shrink-0">
-                        <a href="index.html" class="text-primary font-semibold text-3xl tracking-wider">ENSOLTECH</a>
+                        <a href="index.html" class="flex items-center">
+                            <img src="icon.png" alt="ENSOLTECH Icon" class="h-10 w-auto mr-3 -ml-3" />
+                            <span class="font-semibold text-3xl tracking-wider" style="color:#224881">ENSOLTECH</span>
+                        </a>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-center space-x-8">
@@ -92,43 +124,78 @@
         </nav>
     </header>
     <main class="pt-32 pb-16 min-h-screen bg-white">
-        <section class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="max-w-4xl mx-auto px-2 sm:px-3 lg:px-4">
             <h1 class="text-4xl font-semibold text-gray-900 mb-12 text-center">
                 <span class="lang-en">Contact Us</span>
                 <span class="lang-ko hidden">문의하기</span>
             </h1>
-            <form class="bg-white shadow rounded px-8 pt-6 pb-8 mb-8">
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                        <span class="lang-en">Name</span>
-                        <span class="lang-ko hidden">이름</span>
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <!-- Left: Address, Phone, Map -->
+                <div>
+                    <div class="mb-6 text-gray-600 font-light">
+                        <span class="lang-en font-semibold">Address:</span> <span class="lang-ko hidden font-semibold">주소:</span>
+                        <span>
+                            <span class="lang-en">(15431) 37-24, Pungjeon-ro, Danwon-gu, Ansan-si, 317-dong 307-ho (Wongok-dong, Hansin Treeplex)</span>
+                            <span class="lang-ko hidden">(15431) 안산시 단원구 풍전로 37-24, 317동 307호(원곡동, 한신트리플렉스)</span>
+                        </span>
+                        <p class="mt-2"><span class="lang-en font-semibold">Phone (Korea):</span> <span class="lang-ko hidden font-semibold">전화 (한국):</span> 010-2674-6146</p>
+                        <p><span class="lang-en font-semibold">Phone (China):</span> <span class="lang-ko hidden font-semibold">전화 (중국):</span> 151-0613-2824</p>
+                        <p class="mt-2"><span class="lang-en font-semibold">Email:</span> <span class="lang-ko hidden font-semibold">이메일:</span> teiry@naver.com</p>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow border">
+                        <iframe
+                            src="https://www.google.com/maps?q=(15431)+37-24,+Pungjeon-ro,+Danwon-gu,+Ansan-si,+317-dong+307-ho+(Wongok-dong,+Hansin+Treeplex)&hl=ko&z=17&output=embed"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                        <span class="lang-en">Email</span>
-                        <span class="lang-ko hidden">이메일</span>
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="">
+                <!-- Right: Contact Form -->
+                <div>
+                    <form action="https://formspree.io/f/xnndryla" method="POST" class="bg-white shadow rounded px-8 pt-6 pb-8 mb-8">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                                <span class="lang-en">Name</span>
+                                <span class="lang-ko hidden">성함</span>
+                            </label>
+                            <input name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                                <span class="lang-en">Email</span>
+                                <span class="lang-ko hidden">이메일</span>
+                            </label>
+                            <input name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
+                                <span class="lang-en">Phone</span>
+                                <span class="lang-ko hidden">연락처</span>
+                            </label>
+                            <div class="flex">
+                                <select name="country_code" id="country_code" class="border rounded-l px-2 py-2 bg-gray-50 text-gray-700 focus:outline-none">
+                                    <option value="+82">+82 (KR)</option>
+                                    <option value="+86">+86 (CN)</option>
+                                    <option value="+1">+1 (US)</option>
+                                    <option value="+81">+81 (JP)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                </select>
+                                <input name="phone" class="shadow appearance-none border-t border-b border-r rounded-r w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="010-1234-5678" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+                                <span class="lang-en">Message</span>
+                                <span class="lang-ko hidden">문의 내용</span>
+                            </label>
+                            <textarea name="message" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="4" placeholder="" required></textarea>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                <span class="lang-en">Send</span>
+                                <span class="lang-ko hidden">보내기</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
-                        <span class="lang-en">Message</span>
-                        <span class="lang-ko hidden">메시지</span>
-                    </label>
-                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="4" placeholder=""></textarea>
-                </div>
-                <div class="flex items-center justify-between">
-                    <button class="bg-primary hover:bg-secondary text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        <span class="lang-en">Send</span>
-                        <span class="lang-ko hidden">보내기</span>
-                    </button>
-                </div>
-            </form>
-            <div class="text-center text-gray-600 font-light">
-                <p><span class="lang-en">Email:</span> <span class="lang-ko hidden">이메일:</span> info@ensoltech.com</p>
-                <p><span class="lang-en">Phone:</span> <span class="lang-ko hidden">전화:</span> +1 (555) 123-4567</p>
             </div>
         </section>
     </main>
@@ -137,12 +204,13 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div>
                     <h4 class="text-xl font-normal mb-4">ENSOLTECH</h4>
-                    <p class="text-white/80 font-light">Environmental Solutions Technology</p>
+                    <p class="text-white/80 font-light italic">Enabling Solutions</p>
                 </div>
                 <div>
                     <h4 class="text-xl font-normal mb-4">Contact</h4>
-                    <p class="text-white/80 font-light mb-2">Email: info@ensoltech.com</p>
-                    <p class="text-white/80 font-light">Phone: +1 (555) 123-4567</p>
+                    <p class="text-white/80 font-light mb-2"><span class="lang-en">Email:</span> <span class="lang-ko hidden">이메일:</span> teiry@naver.com</p>
+                    <p class="text-white/80 font-light mb-2"><span class="lang-en">Phone (Korea):</span> <span class="lang-ko hidden">전화 (한국):</span> 010-2674-6146</p>
+                    <p class="text-white/80 font-light"><span class="lang-en">Phone (China):</span> <span class="lang-ko hidden">전화 (중국):</span> 151-0613-2824</p>
                 </div>
                 <div>
                     <h4 class="text-xl font-normal mb-4">Follow Us</h4>
@@ -168,36 +236,47 @@
         // Dropdown delay logic
         let dropdownTimeout;
         const aboutGroup = document.querySelector('.group');
-        const dropdown = aboutGroup.querySelector('div.absolute');
-        const arrow = aboutGroup.querySelector('svg');
-
-        aboutGroup.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-            dropdown.classList.add('opacity-100', 'pointer-events-auto');
-            dropdown.classList.remove('opacity-0', 'pointer-events-none');
-            arrow.classList.add('rotate-180');
-        });
-        aboutGroup.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225); // 225ms delay
-        });
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-        });
-        dropdown.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225);
-        });
-
+        if (aboutGroup) {
+            const dropdown = aboutGroup.querySelector('div.absolute');
+            const arrow = aboutGroup.querySelector('svg');
+            aboutGroup.addEventListener('mouseenter', () => {
+                clearTimeout(dropdownTimeout);
+                dropdown.classList.add('opacity-100', 'pointer-events-auto');
+                dropdown.classList.remove('opacity-0', 'pointer-events-none');
+                arrow.classList.add('rotate-180');
+            });
+            aboutGroup.addEventListener('mouseleave', () => {
+                dropdownTimeout = setTimeout(() => {
+                    dropdown.classList.remove('opacity-100', 'pointer-events-auto');
+                    dropdown.classList.add('opacity-0', 'pointer-events-none');
+                    arrow.classList.remove('rotate-180');
+                }, 225);
+            });
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(dropdownTimeout);
+            });
+            dropdown.addEventListener('mouseleave', () => {
+                dropdownTimeout = setTimeout(() => {
+                    dropdown.classList.remove('opacity-100', 'pointer-events-auto');
+                    dropdown.classList.add('opacity-0', 'pointer-events-none');
+                    arrow.classList.remove('rotate-180');
+                }, 225);
+            });
+        }
         // Mobile menu logic
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+        // Language toggle logic
+        document.getElementById('langToggle').addEventListener('click', function() {
+            const isEnglish = this.textContent.trim() === 'EN';
+            this.textContent = isEnglish ? 'KO' : 'EN';
+            document.querySelectorAll('.lang-en').forEach(el => {
+                el.classList.toggle('hidden');
+            });
+            document.querySelectorAll('.lang-ko').forEach(el => {
+                el.classList.toggle('hidden');
+            });
         });
     </script>
 </body>
