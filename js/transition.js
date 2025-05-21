@@ -1,5 +1,6 @@
 class FloodTransition {
     constructor() {
+        console.log('FloodTransition initialized');
         this.transitionElement = document.createElement('div');
         this.transitionElement.className = 'flood-transition';
         document.body.appendChild(this.transitionElement);
@@ -29,6 +30,7 @@ class FloodTransition {
     }
 
     async transitionTo(url) {
+        console.log('Transitioning to:', url);
         // Start transition
         this.transitionElement.classList.add('active');
         
@@ -45,12 +47,17 @@ const floodTransition = new FloodTransition();
 
 // Add click event listeners to all navigation links
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
     const links = document.querySelectorAll('a[href]');
+    console.log('Found links:', links.length);
+    
     links.forEach(link => {
         // Skip external links and links with target="_blank"
         if (link.hostname === window.location.hostname && !link.target) {
+            console.log('Adding click handler to:', link.href);
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                console.log('Link clicked:', link.href);
                 floodTransition.transitionTo(link.href);
             });
         }
