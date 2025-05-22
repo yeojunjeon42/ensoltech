@@ -86,7 +86,16 @@
                                     <a href="about.html#notice" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Notice</a>
                                 </div>
                             </div>
-                            <a href="service.html" class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light">Service</a>
+                            <div class="relative group">
+                                <button class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light focus:outline-none flex items-center">
+                                    Solutions <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                                </button>
+                                <div class="absolute left-0 mt-2 w-40 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto group-focus:pointer-events-auto z-50">
+                                    <a href="service.html#equipment" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Equipment</a>
+                                    <a href="service.html#material" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Parts & Materials</a>
+                                    <a href="service.html#environment" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Auxiliary & Environmental</a>
+                                </div>
+                            </div>
                             <a href="contact.html" class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light">Contact</a>
                             <div class="flex items-center space-x-4 ml-6">
                                 <a href="#" class="text-gray-800 hover:text-secondary transition-colors duration-200">
@@ -109,16 +118,18 @@
                 </div>
                 <div id="mobileMenu" class="hidden md:hidden bg-white rounded-lg shadow-lg mt-2 p-4">
                     <div class="mb-2">
+                        <a href="about.html" class="block py-2 text-gray-800 hover:text-secondary">About Us</a>
+                    </div>
+                    <div class="mb-2">
                         <button class="w-full text-left text-gray-800 hover:text-secondary py-2 flex items-center justify-between" onclick="this.nextElementSibling.classList.toggle('hidden')">
-                            About <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            Solutions <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div class="hidden pl-4">
-                            <a href="about.html#company" class="block py-1 text-gray-700 hover:bg-gray-100">Company</a>
-                            <a href="about.html#business" class="block py-1 text-gray-700 hover:bg-gray-100">Business</a>
-                            <a href="about.html#notice" class="block py-1 text-gray-700 hover:bg-gray-100">Notice</a>
+                            <a href="service.html#equipment" class="block py-1 text-gray-700 hover:bg-gray-100">Equipment</a>
+                            <a href="service.html#material" class="block py-1 text-gray-700 hover:bg-gray-100">Material</a>
+                            <a href="service.html#environment" class="block py-1 text-gray-700 hover:bg-gray-100">Environment</a>
                         </div>
                     </div>
-                    <a href="service.html" class="block py-2 text-gray-800 hover:text-secondary">Service</a>
                     <a href="contact.html" class="block py-2 text-gray-800 hover:text-secondary">Contact</a>
                 </div>
             </div>
@@ -181,38 +192,7 @@
             </div>
         </div>
     </footer>
-    <script src="js/transition.js" defer></script>
     <script>
-        // Dropdown delay logic
-        let dropdownTimeout;
-        const aboutGroup = document.querySelector('.group');
-        const dropdown = aboutGroup.querySelector('div.absolute');
-        const arrow = aboutGroup.querySelector('svg');
-
-        aboutGroup.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-            dropdown.classList.add('opacity-100', 'pointer-events-auto');
-            dropdown.classList.remove('opacity-0', 'pointer-events-none');
-            arrow.classList.add('rotate-180');
-        });
-        aboutGroup.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225); // 225ms delay
-        });
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-        });
-        dropdown.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225);
-        });
-
         // Mobile menu logic
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.toggle('hidden');

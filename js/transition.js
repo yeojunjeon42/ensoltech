@@ -1,65 +1,82 @@
-class FloodTransition {
-    constructor() {
-        console.log('FloodTransition initialized');
-        this.transitionElement = document.createElement('div');
-        this.transitionElement.className = 'flood-transition';
-        document.body.appendChild(this.transitionElement);
-        
-        // Add styles
-        const style = document.createElement('style');
-        style.textContent = `
-            .flood-transition {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #224881;
-                z-index: 9999;
-                transform: scaleY(0);
-                transform-origin: bottom;
-                transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
-                pointer-events: none;
+// Prevent double inclusion
+if (!window.FloodTransitionLoaded) {
+    window.FloodTransitionLoaded = true;
+
+    class BlurTransition {
+        constructor() {
+            this.createOverlay();
+            // On page load, if the blur is up, fade it out
+            if (sessionStorage.getItem('blurTransitionUp') === '1') {
+                this.overlay.style.opacity = '1';
+                setTimeout(() => {
+                    this.overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        if (this.overlay.parentNode) {
+                            this.overlay.parentNode.removeChild(this.overlay);
+                        }
+                    }, 500); // match transition duration
+                }, 50);
+                sessionStorage.removeItem('blurTransitionUp');
+            } else {
+                this.overlay.style.opacity = '0';
             }
-            .flood-transition.active {
-                transform: scaleY(1);
-                transform-origin: top;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
-    async transitionTo(url) {
-        console.log('Transitioning to:', url);
-        // Start transition
-        this.transitionElement.classList.add('active');
-        
-        // Wait for transition to complete
-        await new Promise(resolve => setTimeout(resolve, 600));
-        
-        // Navigate to new page
-        window.location.href = url;
-    }
-}
-
-// Initialize transition
-const floodTransition = new FloodTransition();
-
-// Add click event listeners to all navigation links
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded');
-    const links = document.querySelectorAll('a[href]');
-    console.log('Found links:', links.length);
-    
-    links.forEach(link => {
-        // Skip external links and links with target="_blank"
-        if (link.hostname === window.location.hostname && !link.target) {
-            console.log('Adding click handler to:', link.href);
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                console.log('Link clicked:', link.href);
-                floodTransition.transitionTo(link.href);
+            // Hide on back navigation
+            window.addEventListener('pageshow', () => {
+                this.createOverlay();
+                this.overlay.style.opacity = '0';
             });
         }
+
+        createOverlay() {
+            // Remove any existing overlay
+            const oldOverlay = document.getElementById('blur-transition-overlay');
+            if (oldOverlay) oldOverlay.remove();
+            // Create overlay
+            this.overlay = document.createElement('div');
+            this.overlay.id = 'blur-transition-overlay';
+            this.overlay.style.position = 'fixed';
+            this.overlay.style.left = '0';
+            this.overlay.style.top = '0';
+            this.overlay.style.width = '100vw';
+            this.overlay.style.height = '100vh';
+            this.overlay.style.zIndex = '9999';
+            this.overlay.style.pointerEvents = 'none';
+            this.overlay.style.background = '#224881';
+            this.overlay.style.backdropFilter = 'blur(16px)';
+            this.overlay.style.transition = 'opacity 0.5s cubic-bezier(0.7, 0, 0.3, 1)';
+            this.overlay.style.opacity = '0';
+            document.body.appendChild(this.overlay);
+        }
+
+        async transitionTo(url) {
+            this.createOverlay();                   // overlay now in DOM at opacity:0
+            void this.overlay.offsetWidth;          // force reflow
+            this.overlay.style.opacity = '1';       // now transition will animate
+            sessionStorage.setItem('blurTransitionUp', '1');
+            await new Promise(r => setTimeout(r, 500));
+            window.location.href = url;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const blurTransition = new BlurTransition();
+        // Event delegation for all clicks
+        document.body.addEventListener('click', function(e) {
+            // Find the closest anchor element
+            let link = e.target;
+            while (link && link.tagName !== 'A') link = link.parentElement;
+            if (!link) return;
+            // Only handle internal links (same hostname, not _blank, not javascript:)
+            if (
+                link.hostname === window.location.hostname &&
+                !link.target &&
+                !link.href.startsWith('javascript:') &&
+                link.getAttribute('href') &&
+                !link.getAttribute('href').startsWith('#')
+            ) {
+                e.preventDefault();
+                blurTransition.transitionTo(link.href);
+            }
+        });
     });
-}); 
+} 

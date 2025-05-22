@@ -9,13 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="js/transition.js"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#224881',
+                        primary: '#0066CC',
                         bayofmany: '#224881',
                         curiousblue: '#24a8de',
                         luckyPoint: '#181f64',
@@ -62,6 +61,8 @@
             background-color: #1c98d0 !important;
             color: #fff !important;
         }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -77,17 +78,21 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-center space-x-8">
-                            <div class="relative group">
-                                <button class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light focus:outline-none flex items-center">
-                                    About <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            <!-- About Us link -->
+                            <a href="about.html" class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light flex items-center">
+                                About Us
+                            </a>
+                            <!-- Solutions dropdown -->
+                            <div class="relative group solutions-group">
+                                <button class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light focus:outline-none flex items-center solutions-btn">
+                                    Solutions <svg class="ml-1 w-4 h-4 solutions-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                                 </button>
-                                <div class="absolute left-0 mt-2 w-40 bg-white rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto group-focus:pointer-events-auto z-50">
-                                    <a href="about.html#company" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Company</a>
-                                    <a href="about.html#business" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Business</a>
-                                    <a href="about.html#notice" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Notice</a>
+                                <div class="absolute left-0 mt-2 w-40 bg-white rounded-lg shadow-lg opacity-0 solutions-dropdown pointer-events-none transition-opacity duration-200 group-hover:opacity-100 group-hover:pointer-events-auto group-focus:opacity-100 group-focus:pointer-events-auto z-50">
+                                    <a href="service.html#equipment" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Equipment</a>
+                                    <a href="service.html#material" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Parts & Materials</a>
+                                    <a href="service.html#environment" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Auxiliary & Environmental</a>
                                 </div>
                             </div>
-                            <a href="service.html" class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light">Service</a>
                             <a href="contact.html" class="text-gray-800 hover:text-secondary transition-colors duration-200 text-lg font-light">Contact</a>
                             <div class="flex items-center space-x-4 ml-6">
                                 <a href="#" class="text-gray-800 hover:text-secondary transition-colors duration-200">
@@ -112,16 +117,18 @@
                 <!-- Mobile menu -->
                 <div id="mobileMenu" class="hidden md:hidden bg-white rounded-lg shadow-lg mt-2 p-4">
                     <div class="mb-2">
+                        <a href="about.html" class="block py-2 text-gray-800 hover:text-secondary">About Us</a>
+                    </div>
+                    <div class="mb-2">
                         <button class="w-full text-left text-gray-800 hover:text-secondary py-2 flex items-center justify-between" onclick="this.nextElementSibling.classList.toggle('hidden')">
-                            About <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            Solutions <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div class="hidden pl-4">
-                            <a href="about.html#company" class="block py-1 text-gray-700 hover:bg-gray-100">Company</a>
-                            <a href="about.html#business" class="block py-1 text-gray-700 hover:bg-gray-100">Business</a>
-                            <a href="about.html#notice" class="block py-1 text-gray-700 hover:bg-gray-100">Notice</a>
+                            <a href="service.html#equipment" class="block py-1 text-gray-700 hover:bg-gray-100">Equipment</a>
+                            <a href="service.html#material" class="block py-1 text-gray-700 hover:bg-gray-100">Parts & Materials</a>
+                            <a href="service.html#environment" class="block py-1 text-gray-700 hover:bg-gray-100">Auxiliary & Environmental</a>
                         </div>
                     </div>
-                    <a href="service.html" class="block py-2 text-gray-800 hover:text-secondary">Service</a>
                     <a href="contact.html" class="block py-2 text-gray-800 hover:text-secondary">Contact</a>
                 </div>
             </div>
@@ -131,51 +138,97 @@
     <main>
         <section class="relative min-h-screen flex items-center justify-center">
             <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80" 
-                     alt="Natural landscape" 
-                     class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-b from-blue-500/40 to-gray-900/60"></div>
+                <img src="unsplash.jpg" alt="Industrial skyline with blue sky" class="pointer-events-none absolute inset-0 w-full h-full object-cover object-center z-0" />
+                <div class="absolute inset-0 bg-gradient-to-b from-blue-500/40 to-gray-900/60 z-10"></div>
             </div>
-            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight mb-6">
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 w-full">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium text-white leading-tight mb-6 text-left">
                     <span class="lang-en">Sustainable Chemical Wet Process Solutions</span>
-                    <span class="lang-ko hidden">지속가능한 케미칼 웨트<br>프로세스 솔루션</span> 
+                    <span class="lang-ko hidden leading-tight">지속가능한 케미칼 웨트<br>프로세스 솔루션</span> 
                 </h1>
-                <p class="text-xl sm:text-2xl text-white/90 mb-12 font-light">
-                    <span class="lang-en">Achieve cost reduction and quality improvement with innovative eco-friendly technology!</span>
-                    <span class="lang-ko hidden leading-relaxed">혁신적인 친환경 기술로 비용 절감과 품질 향상을 동시에!</span>
+                <p class="text-lg sm:text-xl text-white/90 font-light text-left max-w-2xl mb-0">
+                    <span class="lang-en"><span class="font-semibold" style="color:#1c98d0">ENSOLTECH</span> supplies optimal equipment, parts, and raw materials for industries such as PCB, IC Package, GMF, PV, and Battery. Through chemical reduction, water usage optimization, and wastewater recycling solutions, we enhance productivity and reduce costs while protecting the environment, contributing to our customers' profitability and social value.</span>
+                    <span class="lang-ko hidden leading-loose text-base sm:text-lg"><span class="font-semibold" style="color:#224881">엔솔테크</span>는 PCB, IC Package, GMF, PV, 베터리 등의 산업분야에 필요한 최적의 설비와 부품, 원자재 등을 공급하고, 약품절감 및 물 사용 최적화, 폐수 리사이클 솔루션을 통해 생산성향상 및 원가절감 솔루션을 제공하고 환경을 보호함으로써 고객의 수익과 사회적 가치를 높이는데 기여하겠습니다.</span>
                 </p>
             </div>
         </section>
 
         <section class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-normal text-gray-800 mb-12 text-left">
+                    <span class="lang-en">Our Solutions</span>
+                    <span class="lang-ko hidden">솔루션</span>
+                </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-2 transition-all duration-300">
-                        <i class="fas fa-leaf text-4xl text-secondary mb-6"></i>
-                        <h3 class="text-2xl font-normal text-gray-800 mb-4">Eco Innovation</h3>
-                        <p class="text-gray-600 font-light">Developing cutting-edge solutions for environmental challenges</p>
+                    <!-- 생산설비류 -->
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 flex flex-col items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-lg shadow">
+                        <i class="fas fa-chart-line text-4xl text-primary mb-6"></i>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">
+                            <span class="lang-en">Equipment<br><span class='text-base text-gray-700 font-light mt-2 block'>Productivity & Quality Improvement</span></span>
+                            <span class="lang-ko hidden">생산설비류<br><span class='text-base text-gray-700 font-light mt-2 block'>생산성&품질향상</span></span>
+                        </h3>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-2 transition-all duration-300">
-                        <i class="fas fa-recycle text-4xl text-secondary mb-6"></i>
-                        <h3 class="text-2xl font-normal text-gray-800 mb-4">Sustainable Tech</h3>
-                        <p class="text-gray-600 font-light">Creating technology that works in harmony with nature</p>
+                    <!-- 부품/자재류 -->
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 flex flex-col items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-lg shadow">
+                        <i class="fas fa-coins text-4xl text-primary mb-6"></i>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">
+                            <span class="lang-en">Parts & Materials<br><span class='text-base text-gray-700 font-light mt-2 block'>Cost Reduction / Lead Time</span></span>
+                            <span class="lang-ko hidden">부품 / 자재류<br><span class='text-base text-gray-700 font-light mt-2 block'>원가절감 / 납기</span></span>
+                        </h3>
                     </div>
-                    <div class="bg-white rounded-xl shadow-lg p-8 transform hover:-translate-y-2 transition-all duration-300">
-                        <i class="fas fa-solar-panel text-4xl text-secondary mb-6"></i>
-                        <h3 class="text-2xl font-normal text-gray-800 mb-4">Clean Energy</h3>
-                        <p class="text-gray-600 font-light">Advancing renewable energy solutions for a greener future</p>
+                    <!-- 보조설비류 -->
+                    <div class="bg-gradient-to-br from-white to-gray-50 rounded-xl p-8 flex flex-col items-start transition-all duration-300 hover:-translate-y-1 hover:shadow-lg shadow">
+                        <i class="fas fa-sun text-4xl text-primary mb-6"></i>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">
+                            <span class="lang-en">Auxiliary & Environmental<br><span class='text-base text-gray-700 font-light mt-2 block'>Productivity & Environmental Protection</span></span>
+                            <span class="lang-ko hidden">보조설비류<br><span class='text-base text-gray-700 font-light mt-2 block'>생산성향상/환경보호</span></span>
+                        </h3>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-gray-50">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-4xl font-normal text-gray-800 mb-8">Our Vision</h2>
-                <p class="text-xl text-gray-600 font-light">
-                    To lead the global transition towards sustainable environmental solutions through innovative technology and responsible practices.
-                </p>
+        <section class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-4xl font-normal text-gray-800 text-left">
+                        <span class="lang-en">Our Products</span>
+                        <span class="lang-ko hidden">제품</span>
+                    </h2>
+                    <a href="products.html" class="text-primary hover:text-secondary transition-colors duration-200 text-lg font-light whitespace-nowrap">Show all products</a>
+                </div>
+                <div class="w-full flex justify-center mb-8">
+                    <img src="/Users/joseph/Desktop/Cursor/ENSOLTECH/your-image-file.png" alt="Product Line" class="max-w-full h-auto" style="max-height:220px;" />
+                </div>
+                <div class="overflow-x-auto hide-scrollbar w-full">
+                    <div class="flex space-x-6 pb-2 min-w-max">
+                        <!-- Product Card 1 -->
+                        <div class="min-w-[200px] bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Product 1" class="w-32 h-32 object-cover rounded mb-3">
+                            <div class="text-center text-lg font-medium text-gray-800">Product Name 1</div>
+                        </div>
+                        <!-- Product Card 2 -->
+                        <div class="min-w-[200px] bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Product 2" class="w-32 h-32 object-cover rounded mb-3">
+                            <div class="text-center text-lg font-medium text-gray-800">Product Name 2</div>
+                        </div>
+                        <!-- Product Card 3 -->
+                        <div class="min-w-[200px] bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Product 3" class="w-32 h-32 object-cover rounded mb-3">
+                            <div class="text-center text-lg font-medium text-gray-800">Product Name 3</div>
+                        </div>
+                        <!-- Product Card 4 -->
+                        <div class="min-w-[200px] bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Product 4" class="w-32 h-32 object-cover rounded mb-3">
+                            <div class="text-center text-lg font-medium text-gray-800">Product Name 4</div>
+                        </div>
+                        <!-- Product Card 5 -->
+                        <div class="min-w-[200px] bg-white rounded-xl shadow p-4 flex flex-col items-center">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Product 5" class="w-32 h-32 object-cover rounded mb-3">
+                            <div class="text-center text-lg font-medium text-gray-800">Product Name 5</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -189,9 +242,9 @@
                 </div>
                 <div>
                     <h4 class="text-xl font-normal mb-4">Contact</h4>
-                    <p class="mt-2"><span class="lang-en font-medium">Phone (Korea):</span> <span class="lang-ko hidden font-medium">전화 (한국):</span> 010-2674-6146</p>
-                        <p><span class="lang-en font-medium">Phone (China):</span> <span class="lang-ko hidden font-medium">전화 (중국):</span> 151-0613-2824</p>
-                        <p class="mt-2"><span class="lang-en font-medium">Email:</span> <span class="lang-ko hidden font-medium">이메일:</span> teiry@naver.com</p>
+                    <p class="mt-2"><span class="lang-en font-medium text-gray-300">Phone (Korea):</span> <span class="lang-ko hidden font-medium text-gray-300">전화 (한국):</span> <span class="text-gray-300">010-2674-6146</span></p>
+                    <p><span class="lang-en font-medium text-gray-300">Phone (China):</span> <span class="lang-ko hidden font-medium text-gray-300">전화 (중국):</span> <span class="text-gray-300">151-0613-2824</span></p>
+                    <p class="mt-2"><span class="lang-en font-medium text-gray-300">Email:</span> <span class="lang-ko hidden font-medium text-gray-300">이메일:</span> <span class="text-gray-300">teiry@naver.com</span></p>
                 </div>
                 <div>
                     <h4 class="text-xl font-normal mb-4">Follow Us</h4>
@@ -213,13 +266,10 @@
             </div>
         </div>
     </footer>
-
-    <script src="js/transition.js" defer></script>
     <script>
         document.getElementById('langToggle').addEventListener('click', function() {
             const isEnglish = this.textContent.trim() === 'EN';
             this.textContent = isEnglish ? 'KO' : 'EN';
-            
             document.querySelectorAll('.lang-en').forEach(el => {
                 el.classList.toggle('hidden');
             });
@@ -228,40 +278,58 @@
             });
         });
 
-        // Dropdown delay logic
-        let dropdownTimeout;
-        const aboutGroup = document.querySelector('.group');
-        const dropdown = aboutGroup.querySelector('div.absolute');
-        const arrow = aboutGroup.querySelector('svg');
-
-        aboutGroup.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-            dropdown.classList.add('opacity-100', 'pointer-events-auto');
-            dropdown.classList.remove('opacity-0', 'pointer-events-none');
-            arrow.classList.add('rotate-180');
-        });
-        aboutGroup.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225); // 225ms delay
-        });
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(dropdownTimeout);
-        });
-        dropdown.addEventListener('mouseleave', () => {
-            dropdownTimeout = setTimeout(() => {
-                dropdown.classList.remove('opacity-100', 'pointer-events-auto');
-                dropdown.classList.add('opacity-0', 'pointer-events-none');
-                arrow.classList.remove('rotate-180');
-            }, 225);
-        });
+        // Solutions dropdown animation logic
+        let solutionsDropdownTimeout;
+        const solutionsGroup = document.querySelector('.solutions-group');
+        if (solutionsGroup) {
+            const solutionsDropdown = solutionsGroup.querySelector('.solutions-dropdown');
+            const solutionsArrow = solutionsGroup.querySelector('.solutions-arrow');
+            solutionsGroup.addEventListener('mouseenter', () => {
+                clearTimeout(solutionsDropdownTimeout);
+                solutionsDropdown.classList.add('opacity-100', 'pointer-events-auto');
+                solutionsDropdown.classList.remove('opacity-0', 'pointer-events-none');
+                solutionsArrow.classList.add('rotate-180');
+            });
+            solutionsGroup.addEventListener('mouseleave', () => {
+                solutionsDropdownTimeout = setTimeout(() => {
+                    solutionsDropdown.classList.remove('opacity-100', 'pointer-events-auto');
+                    solutionsDropdown.classList.add('opacity-0', 'pointer-events-none');
+                    solutionsArrow.classList.remove('rotate-180');
+                }, 225);
+            });
+            solutionsDropdown.addEventListener('mouseenter', () => {
+                clearTimeout(solutionsDropdownTimeout);
+            });
+            solutionsDropdown.addEventListener('mouseleave', () => {
+                solutionsDropdownTimeout = setTimeout(() => {
+                    solutionsDropdown.classList.remove('opacity-100', 'pointer-events-auto');
+                    solutionsDropdown.classList.add('opacity-0', 'pointer-events-none');
+                    solutionsArrow.classList.remove('rotate-180');
+                }, 225);
+            });
+        }
 
         // Mobile menu logic (existing)
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
             document.getElementById('mobileMenu').classList.toggle('hidden');
         });
+
+        // Reverse loop video logic
+        const video = document.getElementById('heroVideo');
+        let reverse = false;
+        if (video) {
+            video.addEventListener('ended', function() {
+                reverse = !reverse;
+                if (reverse) {
+                    video.playbackRate = -1;
+                    video.currentTime = video.duration - 0.01;
+                } else {
+                    video.playbackRate = 1;
+                    video.currentTime = 0.01;
+                }
+                video.play();
+            });
+        }
     </script>
 </body>
 </html> 
